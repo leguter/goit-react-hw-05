@@ -15,7 +15,6 @@ const HomePage = () => {
      const url =
        "https://api.themoviedb.org/3/trending/movie/day";
    const response = await axios.get(url, options);
-   console.log(response.data.results);
    setTrendingMovies(response.data.results)
  }
   getMovies()

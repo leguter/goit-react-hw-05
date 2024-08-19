@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const MovieDetailsPage = () => {
@@ -16,29 +16,24 @@ const MovieDetailsPage = () => {
       const url =
         `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
       const response = await axios.get(url, options);
-      console.log(response.data);
       setMovieData(response.data)
          
     }
     getMovies();
   }, [movieId]);
   return (
-  <div>
-      <img src="" />
+    <div>
+      <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
       <h1>{movieData.title}</h1>
       <p>User score:{movieData.vote_count}%</p>
       <h2>Overview</h2>
       <p>{movieData.overview}</p>
       <h2>Genres</h2>
 
-      <p>
-        {
-         movieData.genres.map((genre) => genre.name).join(", ")
-          //   return <p key={genre.id}> {genreName}</p>;
-        }
-      </p>
+      <p>{movieData?.genres?.map((genre) => genre.name).join(", ")}</p>
+      <Link to="cast">Cast</Link>
+      <Outlet />
     </div>
- 
   );
 };
 
