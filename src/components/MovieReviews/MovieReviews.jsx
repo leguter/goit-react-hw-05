@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReviewsErr from "../ReviewsErr/ReviewsErr";
 import axios from "axios";
+import css from './MovieReviews.module.css'
 const MovieReviews = () => {
      const [movieReviews, setMovieReviews] = useState([]);
      const { movieId } = useParams();
@@ -24,18 +24,23 @@ const MovieReviews = () => {
        getMovies();
      }, [movieId]);
     return (
-        {movieReviews.total_results !== 0 ?       <ul>
-        {movieReviews.map((movieReview) => {
- return (
-   <li key={movieReview.id}>
-     <h2>Author:{movieReview.author}</h2>
-     <p>{movieReview.content}</p>
-     <p>Rating:{movieReview.author_details.rating}</p>
-   </li>
- )   
-        })}
-      </ul> : <h2>We dont have any reviews for thi movie</h2>}
-
+      <>
+        {movieReviews.length > 0 ? (
+          <ul className={css.list}>
+            {movieReviews.map((movieReview) => {
+              return (
+                <li key={movieReview.id} className={css.listItem}>
+                  <h2>Author: {movieReview.author}</h2>
+                  <p>{movieReview.content}</p>
+                  <p>Rating:{movieReview.author_details.rating}</p>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <h2>We dont have any reviews for this movie</h2>
+        )}
+      </>
     );
         
   

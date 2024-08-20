@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import css from './MovieCast.module.css'
 const MovieCast = () => {
     const [movieCasts, setMovieCasts] = useState([])
     const { movieId } = useParams();
@@ -22,7 +23,7 @@ const MovieCast = () => {
     }, [movieId]);
   const defaultImg = 'https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster'
   return (
-    <ul>
+    <ul className={css.list}>
       {movieCasts.map((movieCast) => {
         return (
           <li key={movieCast.id}>
@@ -35,12 +36,7 @@ const MovieCast = () => {
               width={250}
               alt="poster"
             />
-            {/* <img
-              src={`https://image.tmdb.org/t/p/original${movieCast.profile_path}`}
-              alt={movieCast.character}
-            /> */}
-            <h2>{movieCast.character}</h2>
-            <p></p>
+            <h3>{movieCast.character}</h3>
           </li>
         );
       })}

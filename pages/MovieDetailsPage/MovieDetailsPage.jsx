@@ -1,6 +1,7 @@
 import { useParams, Link, Outlet } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import css from './MovieDetailsPage.module.css'
 const MovieDetailsPage = () => {
   const { movieId } = useParams()
   const [movieData, setMovieData] = useState([])
@@ -22,18 +23,37 @@ const MovieDetailsPage = () => {
     getMovies();
   }, [movieId]);
   return (
-    <div>
-      <img src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`} />
-      <h1>{movieData.title}</h1>
-      <p>User score:{movieData.vote_count}%</p>
-      <h2>Overview</h2>
-      <p>{movieData.overview}</p>
-      <h2>Genres</h2>
+    <div className={css.container}>
+      <Link to="/">
+        <button type="button" className={css.btnBack}>
+          Back to home
+        </button>
+      </Link>
 
-      <p>{movieData?.genres?.map((genre) => genre.name).join(", ")}</p>
-      <Link to="cast">Cast</Link>
-      <Link to='reviews'>reviews</Link>
-      <Outlet />
+      <img
+        src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
+        width={400}
+      />
+      <div className={css.details}>
+        <h1>{movieData.title}</h1>
+        <p>User score:{movieData.vote_count}%</p>
+        <h2>Overview</h2>
+        <p>{movieData.overview}</p>
+        <h2>Genres</h2>
+
+        <p>{movieData?.genres?.map((genre) => genre.name).join(", ")}</p>
+      </div>
+      <div className={css.links}>
+        <Link to="cast" className={css.link}>
+          Cast
+        </Link>
+        <Link to="reviews" className={css.link}>
+          reviews
+        </Link>
+      </div>
+      <div className={css.linkDetails}>
+        <Outlet />
+      </div>
     </div>
   );
 };

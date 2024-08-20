@@ -1,0 +1,26 @@
+.details {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+   display: flex;
+}
+.btnBack {
+    position:absolute;
+    top:15%;
+    
+}
+.links {
+    position: absolute;
+    top: 80%;
+    display: flex;
+    gap:25px;
+    left:60%;
+}
+.link {
+    font-size: 30px;
+}
+.linkDetails {
+ position: absolute;
+ top:90%
+}
