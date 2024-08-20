@@ -32,6 +32,7 @@ const MovieDetailsPage = () => {
 
       <p>{movieData?.genres?.map((genre) => genre.name).join(", ")}</p>
       <Link to="cast">Cast</Link>
+      <Link to='reviews'>reviews</Link>
       <Outlet />
     </div>
   );

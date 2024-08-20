@@ -16,21 +16,29 @@ const MovieCast = () => {
         };
         const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
         const response = await axios.get(url, options);
-        console.log(response);
-        setMovieCasts(response.cast)
+        setMovieCasts(response.data.cast)
       }
       getMovies();
     }, [movieId]);
+  const defaultImg = 'https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster'
   return (
     <ul>
-          {movieCasts.map((movieCast) => {
-          console.log(movieCasts)
+      {movieCasts.map((movieCast) => {
         return (
           <li key={movieCast.id}>
             <img
+              src={
+                movieCast.profile_path
+                  ? `https://image.tmdb.org/t/p/w500${movieCast.profile_path}`
+                  : defaultImg
+              }
+              width={250}
+              alt="poster"
+            />
+            {/* <img
               src={`https://image.tmdb.org/t/p/original${movieCast.profile_path}`}
               alt={movieCast.character}
-            />
+            /> */}
             <h2>{movieCast.character}</h2>
             <p></p>
           </li>
