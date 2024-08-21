@@ -6,7 +6,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams()
   const [movieData, setMovieData] = useState([])
   const location = useLocation()
-  const backLinkRef = useRef(location.state?.from ?? '/')
+  const backLinkRef = useRef(location.state?.from ?? "/movies");
   console.log(backLinkRef)
   useEffect(() => {
     async function getMovies() {

@@ -1,0 +1,11 @@
+.field {
+    margin-right: 20px;
+    width: 170px;
+    height: 30px;
+}
+.formSearch {
+    padding-top: 20px;
+    position:absolute;
+    top: 10%;
+    padding-left: 40px;
+}
