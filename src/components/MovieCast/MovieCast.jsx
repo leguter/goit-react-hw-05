@@ -33,10 +33,10 @@ const MovieCast = () => {
                   ? `https://image.tmdb.org/t/p/w500${movieCast.profile_path}`
                   : defaultImg
               }
-              width={250}
+              width={300}
               alt="poster"
             />
-            <h3>{movieCast.character}</h3>
+            <h4>{movieCast.character}</h4>
           </li>
         );
       })}

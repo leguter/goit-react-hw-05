@@ -22,5 +22,6 @@
 }
 .linkDetails {
  position: absolute;
- top:90%
+ top:90%;
+  padding-left: 0;
 }
