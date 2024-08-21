@@ -5,7 +5,7 @@ import css from './MovieReviews.module.css'
 const MovieReviews = () => {
      const [movieReviews, setMovieReviews] = useState([]);
      const { movieId } = useParams();
-     console.log(movieId);
+    
      useEffect(() => {
        async function getMovies() {
          const options = {
@@ -17,7 +17,6 @@ const MovieReviews = () => {
          };
          const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US`;
            const response = await axios.get(url, options);
-           console.log(response)
                 setMovieReviews(response.data.results);
               
        }

@@ -8,3 +8,10 @@
 display: flex;
     gap: 25px;
 }
+.active {
+    color: white;
+ background-color: black;
+}
+.active:hover {
+    color: white;
+}

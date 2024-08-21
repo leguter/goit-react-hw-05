@@ -5,7 +5,6 @@ import css from './MovieCast.module.css'
 const MovieCast = () => {
     const [movieCasts, setMovieCasts] = useState([])
     const { movieId } = useParams();
-    console.log(movieId)
     useEffect(() => {
       async function getMovies() {
         const options = {

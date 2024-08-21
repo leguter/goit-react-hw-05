@@ -1,10 +1,13 @@
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import css from './MovieDetailsPage.module.css'
 const MovieDetailsPage = () => {
   const { movieId } = useParams()
   const [movieData, setMovieData] = useState([])
+  const location = useLocation()
+  const backLinkRef = useRef(location.state?.from ?? '/')
+  console.log(backLinkRef)
   useEffect(() => {
     async function getMovies() {
       const options = {
@@ -24,7 +27,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
   return (
     <div className={css.container}>
-      <Link to="/">
+      <Link to={backLinkRef.current}>
         <button type="button" className={css.btnBack}>
           Back to home
         </button>
@@ -36,7 +39,7 @@ const MovieDetailsPage = () => {
       />
       <div className={css.details}>
         <h1>{movieData.title}</h1>
-        <p>User score:{movieData.vote_count}%</p>
+        <p>User score: {movieData.vote_average}</p>
         <h2>Overview</h2>
         <p>{movieData.overview}</p>
         <h2>Genres</h2>
